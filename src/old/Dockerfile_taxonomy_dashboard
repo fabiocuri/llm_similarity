@@ -1,0 +1,14 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY "requirements_taxonomy.txt" /app
+COPY "infra-config-pipeline.yaml" /app
+COPY "src/dashboard_taxonomy.py" /app
+COPY "src/mongodb_lib.py" /app
+
+RUN pip install --no-cache-dir -r requirements_taxonomy.txt
+
+EXPOSE 8065
+
+CMD ["python", "dashboard_taxonomy.py"]

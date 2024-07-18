@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-taxonomy-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard-taxonomy-app
+  template:
+    metadata:
+      labels:
+        app: dashboard-taxonomy-app
+    spec:
+      containers:
+        - name: dashboard-taxonomy-app
+          image: walkwayai/taxonomy:3.0
+          ports:
+            - containerPort: 8065
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dashboard-taxonomy-service
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 8065
+      nodePort: 31000
+  selector:
+    app: dashboard-taxonomy-app

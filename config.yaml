@@ -1,0 +1,31 @@
+bigquery-to-retrieve:
+  key-field: "PRODUCTCODE"
+  location-field: "pdt_product_detail_VIDESTINATIONCITY"
+  tables:
+    pdt_inclexcl_ENG:
+      dataset_id: "v_extract1"
+      fields:
+        - "productcode"
+        - "content"
+        - "VIdestinationcity"
+    pdt_product_detail:
+      dataset_id: "v_extract1"
+      fields:
+        - "productcode"
+        - "VIDestinationCity"
+        - "product_description"
+        - "product_title"
+        - "tour_grade_description"
+        - "tour_grade_code"
+    pdt_product_level:
+      dataset_id: "v_extract1"
+      fields:
+        - "ProductCode"
+        - "VIDestinationCity"
+        - "IsPrivateTour"
+        - "SupplierCode"
+    bookings:
+      dataset_id: "v_extract1"
+      fields:
+        - "ProductCode"
+        - "OrderDate"

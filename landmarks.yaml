@@ -1,0 +1,58 @@
+destinations:
+  Paris:
+    landmarks:
+      - Eiffel Tower
+      - Louvre
+      - Orsay Museum (Musée d'Orsay)
+      - Arc de Triomphe
+      - Palais Garnier
+      - Moulin Rouge
+      - Palace of Versailles
+      - Conciergerie
+      - Notre Dame Cathedral
+      - Tuileries Garden (Jardin des Tuileries)
+      - River Seine
+      - Montmartre
+  New York City:
+    landmarks:
+      - Statue of Liberty
+      - Empire State Building
+      - Ellis Island
+      - National September 11 Memorial & Museum
+      - Brooklyn Bridge
+      - Rockefeller Center
+      - Intrepid Sea, Air & Space Museum
+      - One World Observatory
+      - Yankee Stadium
+      - Manhattan Skyline
+      - Metropolitan Museum of Art (The Met)
+      - Flatiron Building
+  Barcelona:
+    landmarks:
+      - Sagrada Familia
+      - Park Güell
+      - Casa Batlló
+      - Milà House (Casa Milà)
+      - Montjuic Park (Parc de Montjuïc)
+      - Palace of Catalan Music (Palau de la Música Catalana)
+      - National Art Museum of Catalonia (Museu Nacional d'Art de Catalunya)
+      - Sant Pau Recinte Modernista
+      - Gothic Quarter (Barri Gotic)
+      - Passeig de Gracia
+      - Port Olímpic
+      - Las Ramblas
+      - La Boquería
+  Austin:
+    landmarks:
+      - Texas Capitol
+      - Congress Avenue Bridge (South Congress Bridge)
+      - 6th Street
+      - Driskill Hotel (The Driskill)
+      - Lady Bird Lake
+      - LBJ Presidential Library
+      - Austin Convention Center
+      - Austin Paramount Theatre
+      - Texas Governor's Mansion
+      - Bullock Texas State History Museum
+      - Barton Springs
+      - South Congress Avenue (SoCo)

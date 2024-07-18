@@ -1,0 +1,56 @@
+pipeline {
+    agent {
+        kubernetes {
+            label 'python'
+            defaultContainer 'python'
+            yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    some-label: python
+spec:
+  containers:
+  - name: python
+    image: walkwayai/python:latest
+    command:
+    - cat
+    tty: true
+"""
+}
+}
+    parameters {
+        string(name: 'product_id', defaultValue: '15081P466', description: 'List of IDs of the products, separated by a comma.')
+    }
+    stages {
+        stage('Experiment Results') {
+            steps {
+                container('python') {
+                    script {
+                        def customBuildNumber = params.product_id
+                        currentBuild.displayName = "${customBuildNumber}"
+                        withCredentials([string(credentialsId: 'OPENAI_API_KEY', variable: 'OPENAI_API_KEY')]) {
+                            withCredentials([file(credentialsId: 'gcp_service_account_json', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                                sh """
+                                python3 src/experiment_product_similarity.py \
+                                    -credentials ${GOOGLE_APPLICATION_CREDENTIALS} \
+                                    -product_id '${params.product_id}' \
+                                    -city_name "same" \
+                                    -supplier_code "different" \
+                                    -average_rating "any" \
+                                    -start_year "any" \
+                                    -landmarks "any" \
+                                    -is_private "any" \
+                                    -categories "any" \
+                                    -embedding_fields 'Product Description, Product Title' \
+                                    -apikey ${OPENAI_API_KEY} \
+                                    -experiment_id ${customBuildNumber}
+                                """
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
